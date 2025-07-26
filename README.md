@@ -33,19 +33,24 @@ docker run --rm \
   pgdump-to-minio:17.5-RELEASE.2025-05-24T17-08-30Z
 ```
 
+## 🔐 Optional Encryption
+
+You can enable **GPG encryption** for your PostgreSQL backups by providing a GPG public key. This ensures that backups are encrypted before being uploaded to MinIO.
+
 ## 🛠 Environment Variables
 
-| Variable            | Required | Description                                       |
-| ------------------- | -------- | ------------------------------------------------- |
-| `POSTGRES_USER`     | ✅       | PostgreSQL user with access to target DBs         |
-| `POSTGRES_PASSWORD` | ✅       | PostgreSQL password                               |
-| `POSTGRES_HOST`     | ✅       | Hostname of the PostgreSQL server                 |
-| `POSTGRES_PORT`     | ❌       | PostgreSQL port (default: `5432`)                 |
-| `DATABASES`         | ✅       | Comma-separated list of databases to back up      |
-| `MINIO_ENDPOINT`    | ✅       | MinIO/S3-compatible endpoint (e.g., `minio:9000`) |
-| `MINIO_ACCESS_KEY`  | ✅       | MinIO access key                                  |
-| `MINIO_SECRET_KEY`  | ✅       | MinIO secret key                                  |
-| `MINIO_BUCKET`      | ✅       | MinIO bucket name (auto-created if not present)   |
+| Variable            | Required | Description                                                           |
+| ------------------- | -------- | --------------------------------------------------------------------- |
+| `POSTGRES_USER`     | ✅       | PostgreSQL user with access to target DBs                             |
+| `POSTGRES_PASSWORD` | ✅       | PostgreSQL password                                                   |
+| `POSTGRES_HOST`     | ✅       | Hostname of the PostgreSQL server                                     |
+| `POSTGRES_PORT`     | ❌       | PostgreSQL port (default: `5432`)                                     |
+| `DATABASES`         | ✅       | Comma-separated list of databases to back up                          |
+| `MINIO_ENDPOINT`    | ✅       | MinIO/S3-compatible endpoint (e.g., `minio:9000`)                     |
+| `MINIO_ACCESS_KEY`  | ✅       | MinIO access key                                                      |
+| `MINIO_SECRET_KEY`  | ✅       | MinIO secret key                                                      |
+| `MINIO_BUCKET`      | ✅       | MinIO bucket name (auto-created if not present)                       |
+| `GPG_PUBLIC_KEY`    | ❌       | Base64-encoded GPG public key for encrypting backups before uploading |
 
 ## 📦 Building the Image
 

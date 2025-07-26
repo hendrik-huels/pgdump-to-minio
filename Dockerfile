@@ -1,7 +1,7 @@
 FROM postgres:17.5
 
 # Install MinIO Client (mc)
-RUN apt-get update && apt-get install -y wget \
+RUN apt-get update && apt-get install -y wget gnupg \
     && wget https://dl.min.io/client/mc/release/linux-amd64/mc.RELEASE.2025-05-21T01-59-54Z \
     && mv mc.RELEASE.2025-05-21T01-59-54Z /usr/local/bin/mc \
     && chmod +x /usr/local/bin/mc \
